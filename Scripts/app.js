@@ -17,18 +17,21 @@ function init() {
     
     // Set up scene
     scene = new THREE.Scene();
+
+    // Add texture to the monolith and the rock
     material = new THREE.MeshBasicMaterial( { color: 0xc2c2c2, envMap: textureCube } );
     var textureLoader = new THREE.TextureLoader();
     var texture = textureLoader.load( '../rocktexture.jpg' );
     console.log(texture);
+
     //Setup Camera
     const fov = 55;
     const aspect = window.innerWidth/window.innerHeight;
     const near = 45;
     const far = 30000;
-
     camera = new THREE.PerspectiveCamera(fov,aspect,near,far);
     camera.position.set(2500,100,100);
+    
     //Setup renderer
     renderer = new THREE.WebGLRenderer({antialias:true});
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -37,7 +40,7 @@ function init() {
     //Setup orbitControls
     let controls = new THREE.OrbitControls(camera,renderer.domElement);
     controls.maxDistance = 2500; // zoom out
-    controls.minDistance = 10; // zoom in
+    controls.minDistance = 30; // zoom in
     // controls.target.set(-900,-100,-900);
 
     // Setup light
@@ -78,6 +81,7 @@ function init() {
 
     Promise.all([promise1,promise3]).then(() => {
         console.log("Resolved");
+        document.getElementById("loader").style.display = "none";
         console.log(rock);
         monolith.scene.position.set(-3500,900,-700);
         monolith.scene.scale.set(30,30,30);
