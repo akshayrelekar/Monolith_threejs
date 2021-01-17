@@ -26,9 +26,9 @@ h5 {
   width: 120px;
   height: 120px;
   margin: -76px 0 0 -76px;
-  border: 10px solid #f3f3f3;
+  border: 6px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 10px solid #3498db;
+  border-top: 6px solid #3498db;
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
 }
